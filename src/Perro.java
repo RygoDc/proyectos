@@ -4,10 +4,10 @@ public class Perro extends Animal{
     }
     @Override
     public void hacerSonido(){
-        System.out.println(this.nombre + "dice: Guau Guau re Guau");
+        System.out.println(this.nombre+ " dice: Guau Guau re Guau");
     }
 
     public void moverCola(){
-        System.out.println(this.nombre + "esta moviendo la cola");
+        System.out.println(this.nombre + " esta moviendo la cola");
     }
 }
