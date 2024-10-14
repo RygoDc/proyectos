@@ -32,26 +32,21 @@ public class FileManager {
                 int y = Integer.parseInt(datos[3]);
                 String color = datos[datos.length-1];
 
-                switch (tipo.toLowerCase()){
-                    case "rectangulo":
-                        int ancho = Integer.parseInt(datos[2]);
-                        int alto = Integer.parseInt(datos[4]);
+                if(tipo.toLowerCase()=="rectangulo"){
+                    int ancho = Integer.parseInt(datos[2]);
+                    int alto = Integer.parseInt(datos[4]);
 
-                        figuras.add(new Rectangulo(x,y,color,ancho,alto));
-                        break;
-                    case "circulo":
-                        int radio = Integer.parseInt(datos[2]);
+                    figuras.add(new Rectangulo(x,y,color,ancho,alto));
+                } else if (tipo.toLowerCase()== "circulo") {
+                    int radio = Integer.parseInt(datos[2]);
 
-                        figuras.add(new Circulo(x,y,color,radio));
-                        break;
-                    case "cuadrado":
-                        int lado = Integer.parseInt(datos[2]);
+                    figuras.add(new Circulo(x,y,color,radio));
+                } else if (tipo.toLowerCase()== "cuadrado") {
+                    int lado = Integer.parseInt(datos[2]);
 
-                        figuras.add(new Cuadrado(x,y,color,lado));
-                        break;
-                    default:
-                        System.out.println("Figura no encontrada");
-                        break;
+                    figuras.add(new Cuadrado(x,y,color,lado));
+                } else {
+                    System.out.println("Figura no encontrada");
                 }
             }
             fileReader.close();
@@ -60,4 +55,18 @@ public class FileManager {
             throw new RuntimeException(e);
         }
     }
+    public ArrayList<Figura> getDataFromFile(){
+        return figuras;
+    }
+    public void exportToFile(String archivoSalida){
+        try (BufferedWriter escribir = new BufferedWriter(new FileWriter(archivoSalida))){
+            for (Figura figura : figuras){
+                escribir.write(figura.toString());
+                escribir.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Error al escribir el archivo" + archivoSalida);
+        }
+    }
+
 }
