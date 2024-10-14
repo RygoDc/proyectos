@@ -9,18 +9,22 @@ public class Ejercicio2Oc10 {
 
         try {
             if(f.exists()) {
-                Scanner lector = new Scanner(fichero);
+                FileReader fileReader = new FileReader(fichero);
+                BufferedReader lector = new BufferedReader(fileReader);
                 int contadorLetras=0;
-                while (lector.hasNextLine()) {
-                    String linea = lector.nextLine();
-                    for (char c : linea.toCharArray()) {
-                        if (Character.isLetter(c)) {
+                String linea;
+                while ((linea = lector.readLine()) !=null){
+                    System.out.println(linea);
+                    System.out.println(linea.length());
+                    for (int i = 0; i < linea.length(); i++) {
+                        System.out.println(Character.toLowerCase(linea.charAt(i)));
+                        if((Character.toLowerCase(linea.charAt(i))=='a') || (Character.toLowerCase(linea.charAt(i))=='e') || (Character.toLowerCase(linea.charAt(i))=='i') || (Character.toLowerCase(linea.charAt(i))=='o') || (Character.toLowerCase(linea.charAt(i))=='u')){
                             contadorLetras++;
                         }
                     }
                 }
                 lector.close();
-                System.out.println("El archivo contiene " + contadorLetras + " letras.");
+                System.out.println("El archivo contiene " + contadorLetras + " vocales.");
             }
             else
                 System.out.println(f.createNewFile());

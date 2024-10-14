@@ -3,7 +3,8 @@ public class Rectangulo extends Figura {
     private double largo;
     private double ancho;
 
-    public Rectangulo(double largo, double ancho) {
+    public Rectangulo(int x, int y, String color, double largo, double ancho) {
+        super(x, y, color);
         this.largo = largo;
         this.ancho = ancho;
     }
@@ -23,15 +24,23 @@ public class Rectangulo extends Figura {
     public void setAncho(double ancho) {
         this.ancho = ancho;
     }
+//
+//    @Override
+//    public double calcularArea() {
+//        return largo * ancho;
+//    }
+//
+//    @Override
+//    public double calcularPerimetro() {
+//        return 2 * largo + 2 * ancho;
+//    }
 
     @Override
-    public double calcularArea() {
-        return largo * ancho;
+    public String toString() {
+        return "Rectangulo{" +
+                "largo=" + largo +
+                ", ancho=" + ancho +
+                ", color='" + color + '\'' +
+                '}';
     }
-
-    @Override
-    public double calcularPerimetro() {
-        return 2 * largo + 2 * ancho;
-    }
-
 }
